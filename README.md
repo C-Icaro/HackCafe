@@ -17,7 +17,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;O resultado é maior produtividade, redução de perdas e apoio à tomada de decisão, levando inovação à realidade do produtor rural.
 
-- Código plataforma web: safe-cafe.vercel.app
+- Link da plataforma web: [clique aqui](safe-cafe.vercel.app)
 
 ## Estrutura de pastas
 
