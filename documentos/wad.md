@@ -1,27 +1,26 @@
 # Website Architecture Document (WAD)
 
 ## 1. Introdução
-Breve descrição da plataforma web, propósito e relação com o dispositivo IoT (se houver).
 
-**Exemplo:**  
-A plataforma web é responsável por exibir, processar e gerenciar dados recebidos do dispositivo IoT, oferecendo interface para usuários e administradores.
+&nbsp;&nbsp;&nbsp;&nbsp;A plataforma web é o ponto de contato do agricultor com a sua plantação. Nela ele terá a sua disposição um dashboard de amostragem dos dados coletados pelas unidades de campo.
 
 ---
 
 ## 2. Visão Geral
-- **Tipo de aplicação:** (SPA, SSR, PWA etc.)  
-- **Tecnologias principais:** (React, Node.js, Flask, etc.)  
-- **Público-alvo:** (usuários finais, administradores, técnicos)
+- **Tipo de aplicação:** Web
+- **Tecnologias principais:** React e TailwindCSS
+- **Público-alvo:** Agricultor de café de montanha
 
 ---
 
 ## 3. Escopo
 **Inclui:**
-- Dashboard em tempo real
+- Dashboard com dados coletados
 - Autenticação de usuários
 - API para integração com o dispositivo
+- Web app para celulares
 
-**Não inclui:**
+**Não inclui (no momento):**
 - Aplicativo mobile dedicado
 - Processamento offline
 
@@ -36,7 +35,7 @@ A plataforma web é responsável por exibir, processar e gerenciar dados recebid
 |------------|--------|-------------|
 | Frontend | Interface do usuário | React, TailwindCSS |
 | Backend/API | Processamento e integração | Node.js, Express |
-| Banco de Dados | Armazenamento persistente | PostgreSQL |
+| Banco de Dados | Armazenamento persistente | Supabase |
 | Serviços Externos | Envio de notificações | Firebase Cloud Messaging |
 
 ---
@@ -78,18 +77,12 @@ A plataforma web é responsável por exibir, processar e gerenciar dados recebid
 
 ---
 
-## 10. Testes
-- Testes unitários e de integração  
-- Ferramentas usadas (Jest, Cypress etc.)
+## 10. Plano de Evolução
+- Adicionar controle dos dispositivos de campo por meio da plataforma web 
 
 ---
 
-## 11. Plano de Evolução
-Funcionalidades previstas para próximas versões
-
----
-
-## 12. Anexos
+## 11. Anexos
 - Diagramas  
 - Capturas de tela  
 - Links para protótipos
