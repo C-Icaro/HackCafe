@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 23% 92%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 42 23% 95%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 42 23% 95%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 20 30% 23%;
+    --primary-foreground: 42 23% 92%;
+    --secondary: 30 20% 65%;
+    --secondary-foreground: 20 14.3% 4.1%;
+    --muted: 42 15% 85%;
+    --muted-foreground: 20 5.9% 45%;
+    --accent: 42 15% 85%;
+    --accent-foreground: 20 14.3% 4.1%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 42 15% 80%;
+    --input: 42 15% 80%;
+    --ring: 20 30% 23%;
+    --radius: 0.5rem;
+    --chart-1: 20 30% 23%;
+    --chart-2: 30 20% 65%;
+    --chart-3: 42 23% 75%;
+    --chart-4: 100 20% 40%;
+    --chart-5: 42 15% 85%;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 42 23% 92%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 42 23% 92%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 42 23% 92%;
+    --primary: 42 23% 92%;
+    --primary-foreground: 20 30% 23%;
+    --secondary: 20 5.9% 15%;
+    --secondary-foreground: 42 23% 92%;
+    --muted: 20 5.9% 15%;
+    --muted-foreground: 42 5% 65%;
+    --accent: 20 5.9% 15%;
+    --accent-foreground: 42 23% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 20 5.9% 15%;
+    --input: 20 5.9% 15%;
+    --ring: 42 23% 75%;
+    --chart-1: 42 23% 75%;
+    --chart-2: 30 20% 65%;
+    --chart-3: 20 30% 23%;
+    --chart-4: 100 20% 60%;
+    --chart-5: 20 5.9% 25%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-coffee-dark text-cream px-6 py-3 rounded-lg font-medium hover:bg-coffee-medium transition-colors shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-coffee-light text-coffee-dark px-6 py-3 rounded-lg font-medium hover:bg-coffee-medium hover:text-cream transition-colors shadow-md;
+  }
+
+  .card-status-normal {
+    @apply border-l-4 border-l-green-500;
+  }
+
+  .card-status-warning {
+    @apply border-l-4 border-l-yellow-500;
+  }
+
+  .card-status-alert {
+    @apply border-l-4 border-l-red-500;
+  }
+
+  .status-indicator-normal {
+    @apply w-3 h-3 bg-green-500 rounded-full;
+  }
+
+  .status-indicator-warning {
+    @apply w-3 h-3 bg-yellow-500 rounded-full;
+  }
+
+  .status-indicator-alert {
+    @apply w-3 h-3 bg-red-500 rounded-full;
+  }
+}

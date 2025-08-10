@@ -1,0 +1,19 @@
+# HackCafé IoT Monitor - Dependências Python
+# Instalar com: pip install -r requirements.txt
+
+# Interface gráfica
+matplotlib>=3.7.0
+tkinter-tooltip>=2.0.0
+
+# Comunicação serial
+pyserial>=3.5
+
+# Processamento de dados
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Gráficos e visualização
+seaborn>=0.12.0
+
+# Utilitários
+python-dateutil>=2.8.0

@@ -1,0 +1,85 @@
+# YOLO Configuration for Coffee Disease Detection
+# Configuração personalizada para detecção de doenças em folhas de café
+
+# Paths
+path: ./coffee-datasets/leaf  # Dataset path
+train: images/train  # Train images (relative to 'path')
+val: images/val      # Val images (relative to 'path')
+
+# Classes
+nc: 5  # Number of classes
+names: ['healthy', 'miner', 'rust', 'phoma', 'cercospora']
+
+# Hyperparameters
+epochs: 100
+batch_size: 16
+imgsz: 640
+patience: 50
+
+# Data augmentation
+hsv_h: 0.015  # HSV-Hue augmentation (fraction)
+hsv_s: 0.7    # HSV-Saturation augmentation (fraction)
+hsv_v: 0.4    # HSV-Value augmentation (fraction)
+degrees: 0.0   # Image rotation (+/- deg)
+translate: 0.1 # Image translation (+/- fraction)
+scale: 0.5    # Image scale (+/- gain)
+shear: 0.0    # Image shear (+/- deg)
+perspective: 0.0  # Image perspective (+/- fraction), range 0-0.001
+flipud: 0.0   # Image flip up-down (probability)
+fliplr: 0.5   # Image flip left-right (probability)
+mosaic: 1.0   # Image mosaic (probability)
+mixup: 0.0    # Image mixup (probability)
+copy_paste: 0.0  # Segment copy-paste (probability)
+
+# Loss coefficients
+box: 0.05     # Box loss gain
+cls: 0.5      # Class loss gain
+dfl: 1.5      # DFL loss gain
+pose: 12.0    # Pose loss gain
+kobj: 2.0     # Keypoint obj loss gain
+label_smoothing: 0.0  # Label smoothing epsilon
+
+# Optimizer
+optimizer: SGD  # Optimizer (SGD, Adam, etc.)
+lr0: 0.01      # Initial learning rate
+lrf: 0.01      # Final learning rate (lr0 * lrf)
+momentum: 0.937  # SGD momentum/Adam beta1
+weight_decay: 0.0005  # Optimizer weight decay
+warmup_epochs: 3.0  # Warmup epochs (fractions ok)
+warmup_momentum: 0.8  # Warmup initial momentum
+warmup_bias_lr: 0.1  # Warmup initial bias lr
+
+# Model
+model: yolov8n.pt  # Model file
+pretrained: True   # Use pretrained model
+verbose: False     # Verbose output
+seed: 0           # Random seed for reproducibility
+
+# Save
+save: True        # Save checkpoints
+save_period: -1   # Save checkpoint every x epochs (disabled if < 1)
+project: coffee_disease_detection  # Save to project/name
+name: exp         # Save to project/name
+exist_ok: False   # Existing project/name ok, do not increment
+pretrained: True  # Use pretrained model
+optimizer: SGD    # Optimizer (SGD, Adam, etc.)
+verbose: False    # Verbose output
+seed: 0          # Random seed for reproducibility
+
+# Validation
+val: True         # Validate during training
+plots: True       # Save plots for train/val
+save_json: False  # Save a COCO-JSON results file
+save_hybrid: False  # Save hybrid version of labels
+conf: 0.001      # Confidence threshold for detection
+iou: 0.6         # NMS IoU threshold
+max_det: 300     # Maximum number of detections per image
+half: True       # Use FP16 half-precision inference
+dnn: False       # Use OpenCV DNN for ONNX inference
+
+# Logging
+plots: True       # Save plots for train/val
+save_period: -1   # Save checkpoint every x epochs (disabled if < 1)
+project: coffee_disease_detection  # Save to project/name
+name: exp         # Save to project/name
+exist_ok: False   # Existing project/name ok, do not increment
