@@ -12,10 +12,22 @@ from ultralytics import YOLO
 import matplotlib.pyplot as plt
 
 class CoffeeDiseaseDetector:
-    def __init__(self, model_path='yolov8n.pt', dataset_path='coffee-datasets/leaf/'):
+    def __init__(self, model_path='yolov8n.pt', dataset_path=None):
         """Inicializa o detector"""
-        self.model_path = model_path
-        self.dataset_path = dataset_path
+        # Determina o caminho base do script atual
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Define caminhos padrão baseados na localização do script
+        if dataset_path is None:
+            self.dataset_path = os.path.join(script_dir, 'coffee-datasets', 'leaf')
+        else:
+            self.dataset_path = dataset_path
+            
+        if not os.path.isabs(model_path):
+            self.model_path = os.path.join(script_dir, model_path)
+        else:
+            self.model_path = model_path
+            
         self.model = None
         self.dataset_df = None
         
