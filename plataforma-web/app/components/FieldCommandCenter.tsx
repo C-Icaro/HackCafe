@@ -386,7 +386,7 @@ export default function FieldCommandCenter() {
               <div className="rounded-lg border border-coffee-light/40 bg-white p-4">
                 <div className="mb-2 flex items-center gap-2 text-sm font-bold text-coffee-dark">
                   <ShieldCheck className="h-4 w-4 text-olive" />
-                  Dado -> risco -> acao
+                  Dado {"->"} risco {"->"} acao
                 </div>
                 <p className="text-sm text-gray-700">{selectedPlot.cause}</p>
                 <div className="mt-3 rounded-md bg-cream p-3 text-sm font-medium text-coffee-dark">{selectedPlot.action}</div>
