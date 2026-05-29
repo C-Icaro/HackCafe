@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import SensorChart from "./SensorChart"
 import CoffeePriceTicker from "./CoffeePriceTicker"
+import FieldCommandCenter from "./FieldCommandCenter"
 
 interface SensorData {
   id: string
@@ -125,6 +126,9 @@ export default function MainDashboard() {
 
       {/* Coffee Price Ticker */}
       <CoffeePriceTicker />
+
+      {/* Mapa operacional de talhoes */}
+      <FieldCommandCenter />
 
       {/* Status do Café Arábica - Sem barra de progresso */}
       <Card className="bg-gradient-to-r from-coffee-light to-coffee-medium text-white overflow-hidden relative">
