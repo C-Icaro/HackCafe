@@ -18,6 +18,18 @@ interface SensorChartProps {
   chartType?: "temperature" | "humidity"
 }
 
+interface TooltipPayload {
+  color?: string
+  name?: string
+  value?: number
+}
+
+interface CustomTooltipProps {
+  active?: boolean
+  payload?: TooltipPayload[]
+  label?: string
+}
+
 export default function SensorChart({
   data,
   color,
@@ -25,19 +37,19 @@ export default function SensorChart({
   unit = "",
   chartType = "temperature",
 }: SensorChartProps) {
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-xl">
           <p className="font-semibold text-gray-800 mb-2">{`${label}`}</p>
-          {payload.map((entry: any, index: number) => (
-            <div key={index} className="flex items-center justify-between space-x-4 mb-1">
+          {payload.map((entry, index) => (
+            <div key={`${entry.name}-${index}`} className="flex items-center justify-between space-x-4 mb-1">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></div>
                 <span className="text-sm text-gray-600">{entry.name}:</span>
               </div>
               <span className="font-medium" style={{ color: entry.color }}>
-                {entry.value.toFixed(1)}
+                {entry.value?.toFixed(1)}
                 {unit}
               </span>
             </div>
@@ -52,7 +64,7 @@ export default function SensorChart({
 
   return (
     <div className="h-64 w-full">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">

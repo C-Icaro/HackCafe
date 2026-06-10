@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import type { ComponentType } from "react"
 import { AlertTriangle, Droplets, Thermometer, Bug, CheckCircle, Clock } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -12,7 +13,7 @@ interface Alert {
   description: string
   timestamp: Date
   resolved: boolean
-  icon: any
+  icon: ComponentType<{ className?: string }>
 }
 
 export default function AlertsPage() {
@@ -171,7 +172,6 @@ export default function AlertsPage() {
           <h2 className="text-xl font-semibold text-coffee-dark">Alertas Resolvidos</h2>
           <div className="space-y-3">
             {resolvedAlerts.map((alert) => {
-              const Icon = alert.icon
               return (
                 <Card key={alert.id} className={`border ${getAlertColor(alert.type, alert.resolved)} opacity-75`}>
                   <CardContent className="p-4">

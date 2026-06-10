@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import type { ComponentType } from "react"
 import { Droplets, Thermometer, Lightbulb, TrendingUp, TrendingDown, Minus, Coffee, Activity, Wifi } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -13,7 +14,7 @@ interface SensorData {
   value: number
   unit: string
   status: "normal" | "warning" | "alert"
-  icon: any
+  icon: ComponentType<{ className?: string }>
   trend: "up" | "down" | "stable"
 }
 
@@ -57,16 +58,14 @@ export default function MainDashboard() {
     },
   ])
 
-  const [coffeeStatus, setCoffeeStatus] = useState({
+  const coffeeStatus = {
     variety: "Arábica",
     stage: "cereja",
     status: "normal" as "normal" | "warning" | "alert",
     altitude: "1200m",
     region: "Montanhas do RJ",
     quality: "Premium",
-  })
-
-  const [activeChart, setActiveChart] = useState<"temperature" | "humidity">("temperature")
+  }
 
   // Simular atualizações em tempo real
   useEffect(() => {

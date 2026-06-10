@@ -1,0 +1,85 @@
+name: Devin Cloud Delegate
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_title:
+        description: Short title for the Devin task
+        required: true
+      prompt:
+        description: Full task prompt for Devin
+        required: true
+      branch:
+        description: Branch or ref Devin should inspect first
+        required: false
+        default: main
+
+permissions:
+  contents: read
+
+jobs:
+  create-session:
+    name: Create Devin session
+    runs-on: ubuntu-latest
+    env:
+      DEVIN_API_KEY: ${{ secrets.DEVIN_API_KEY }}
+      DEVIN_ORG_ID: ${{ secrets.DEVIN_ORG_ID }}
+      TASK_TITLE: ${{ inputs.task_title }}
+      TASK_PROMPT: ${{ inputs.prompt }}
+      TASK_BRANCH: ${{ inputs.branch }}
+    steps:
+      - name: Validate Devin credentials
+        run: |
+          if [ -z "$DEVIN_API_KEY" ] || [ -z "$DEVIN_ORG_ID" ]; then
+            echo "::error::Configure DEVIN_API_KEY and DEVIN_ORG_ID as GitHub Actions secrets."
+            exit 1
+          fi
+
+      - name: Create session
+        id: devin
+        run: |
+          FULL_PROMPT=$(cat <<EOF
+          Use the strongest available Devin mode/model for this account, including ULTRA/mythical if available.
+
+          Repository: https://github.com/C-Icaro/HackCafe
+          Branch/ref: ${TASK_BRANCH}
+          Task: ${TASK_TITLE}
+
+          Read AGENTS.md first and follow the project Definition of Done.
+
+          User prompt:
+          ${TASK_PROMPT}
+
+          Verification baseline:
+          - use Node 22 with pnpm 11.3.0
+          - cd plataforma-web && pnpm install --frozen-lockfile
+          - cd plataforma-web && pnpm run typecheck
+          - cd plataforma-web && pnpm run lint
+          - cd plataforma-web && pnpm run build
+          - python tests/smoke_data_contract.py
+
+          Deliver a PR or a clear research report with evidence, risks, and next decision.
+          EOF
+          )
+
+          RESPONSE=$(
+            jq -n --arg prompt "$FULL_PROMPT" '{prompt: $prompt}' |
+              curl -sS -X POST "https://api.devin.ai/v3/organizations/${DEVIN_ORG_ID}/sessions" \
+                -H "Authorization: Bearer ${DEVIN_API_KEY}" \
+                -H "Content-Type: application/json" \
+                --data-binary @-
+          )
+
+          echo "$RESPONSE" | jq .
+          SESSION_ID=$(echo "$RESPONSE" | jq -r '.id // .session_id // empty')
+          if [ -z "$SESSION_ID" ]; then
+            echo "::error::Could not find Devin session id in response."
+            exit 1
+          fi
+          echo "session_id=$SESSION_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Summary
+        run: |
+          echo "### Devin session created" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Session id: ${{ steps.devin.outputs.session_id }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Branch/ref: ${TASK_BRANCH}" >> "$GITHUB_STEP_SUMMARY"

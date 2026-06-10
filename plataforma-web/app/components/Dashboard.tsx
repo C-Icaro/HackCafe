@@ -1,12 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Home, Bell, Settings, LogOut, Menu, X, Brain } from "lucide-react"
+import { Home, Bell, Settings, LogOut, Menu, X, Brain, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import MainDashboard from "./MainDashboard"
 import AlertsPage from "./AlertsPage"
 import SettingsPage from "./SettingsPage"
 import PredictiveAnalysisPage from "./PredictiveAnalysisPage"
+import DecisionIntelligencePage from "./DecisionIntelligencePage"
 
 interface DashboardProps {
   user: string
@@ -20,6 +21,7 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
   const navigation = [
     { id: "dashboard", name: "Dashboard", icon: Home },
     { id: "predictive", name: "Análise Preditiva", icon: Brain },
+    { id: "decision", name: "Decisão IA", icon: Target },
     { id: "alerts", name: "Alertas", icon: Bell },
     { id: "settings", name: "Configurações", icon: Settings },
   ]
@@ -30,6 +32,8 @@ export default function Dashboard({ user, onLogout }: DashboardProps) {
         return <MainDashboard />
       case "predictive":
         return <PredictiveAnalysisPage />
+      case "decision":
+        return <DecisionIntelligencePage />
       case "alerts":
         return <AlertsPage />
       case "settings":
