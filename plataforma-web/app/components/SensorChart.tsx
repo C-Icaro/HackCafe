@@ -63,8 +63,8 @@ export default function SensorChart({
   const gradientId = `gradient-${chartType}`
 
   return (
-    <div className="h-64 w-full">
-      <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+    <div className="h-64 w-full min-w-0">
+      <ResponsiveContainer width="100%" height={256} minWidth={1} minHeight={1}>
         <AreaChart data={data}>
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
