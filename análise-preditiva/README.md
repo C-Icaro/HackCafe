@@ -113,6 +113,18 @@ detector = CoffeeDiseaseDetector(
 - Verifique se a imagem existe em `coffee-datasets/leaf/images/`
 - Use nomes exatos (ex: `1.jpg`, `100.jpg`)
 
+## Avaliacao de qualidade do modelo
+
+O peso versionado atualmente (`yolov8n.pt`) e um detector YOLO generico treinado em COCO, nao um modelo treinado nas classes BRACOL de cafe. Por isso, precisao, recall, F1 e matriz de confusao de doencas de cafe nao devem ser comunicados para esse peso.
+
+Use o avaliador abaixo para gerar uma evidencia reproduzivel:
+
+```bash
+python análise-preditiva/evaluate_cv_model_quality.py --sample-size 24 --output documentos/evidencias/avaliacao-modelo-visao-yolov8n.json
+```
+
+Quando houver um classificador treinado com classes compativeis com BRACOL (`healthy`, `leaf_miner`, `leaf_rust`, `brown_leaf_spot_or_phoma`, `cercospora`), o mesmo script calcula accuracy, precision, recall, F1 macro/ponderado, metricas por classe e matriz de confusao no split de teste.
+
 ## 🚀 Próximos Passos
 
 1. **Treinar modelo personalizado** para doenças específicas

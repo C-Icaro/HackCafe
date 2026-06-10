@@ -62,3 +62,23 @@ jobs:
           python tests/smoke_data_contract.py
           python tests/smoke_cv_dataset_manifest.py
           python análise-preditiva/prepare_bracol_classification.py --dry-run
+
+  cv-model-quality:
+    name: CV model quality smoke
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: análise-preditiva/requirements.txt
+
+      - name: Install CV dependencies
+        run: python -m pip install -r análise-preditiva/requirements.txt
+
+      - name: Run CV model quality smoke
+        run: python tests/smoke_cv_model_quality.py
