@@ -48,6 +48,7 @@ Nao fazer:
 - Nao commitar segredos.
 - Nao substituir contratos sem teste.
 - Nao fazer refactor amplo fora da fatia.
+- Nao redesenhar o frontend atual do HackCafe; preserve navegacao, paleta, densidade, hierarquia visual e componentes base.
 
 Verificacao:
 - usar Node 22 e pnpm 11.3.0

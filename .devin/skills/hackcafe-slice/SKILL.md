@@ -16,7 +16,8 @@ For any HackCafe feature request:
 2. Separate facts, assumptions, and decisions.
 3. Produce a small story with acceptance criteria.
 4. Identify the files/contracts likely to change.
-5. Implement only the smallest slice that proves the decision.
-6. Run relevant checks and report evidence.
+5. Preserve the current HackCafe frontend identity unless the maintainer explicitly requests a redesign.
+6. Implement only the smallest slice that proves the decision.
+7. Run relevant checks and report evidence.
 
 Keep the traceability chain visible: hypothesis -> evidence -> decision -> story -> acceptance criteria -> metric.

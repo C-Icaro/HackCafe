@@ -46,6 +46,7 @@ jobs:
           Task: ${TASK_TITLE}
 
           Read AGENTS.md first and follow the project Definition of Done.
+          Preserve the current HackCafe frontend identity. Do not redesign navigation, visual language, palette, density, or core components unless the maintainer explicitly asks for a redesign.
 
           User prompt:
           ${TASK_PROMPT}

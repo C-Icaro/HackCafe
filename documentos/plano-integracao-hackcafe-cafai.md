@@ -20,6 +20,10 @@ A uniao das ideias deve posicionar o projeto como uma central de decisao para pr
 
 Transformar a plataforma web do HackCafe na vitrine principal e absorver o conceito do CafAI como "Decisao IA da Safra".
 
+## Decisao de Experiencia
+
+O frontend atual do HackCafe deve ser preservado como identidade visual principal. A integracao com CafAI deve encaixar previsao, recomendacoes e automacoes dentro da experiencia existente, sem redesenhar navegacao, paleta, densidade, hierarquia visual ou componentes base sem decisao explicita.
+
 ## Backlog Rastreavel
 
 | Prioridade | Oportunidade | Story | Criterio de aceite | Metrica |

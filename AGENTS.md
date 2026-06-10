@@ -19,6 +19,14 @@ Toda entrega deve preservar a cadeia: hipotese -> evidencia -> decisao -> oportu
 - Ao criar feature web, use Node 22 com pnpm 11.3.0 e rode no minimo `pnpm install --frozen-lockfile`, `pnpm run typecheck`, `pnpm run lint` e `pnpm run build` dentro de `plataforma-web`.
 - Ao mexer em dados/modelos Python, rode `python tests/smoke_data_contract.py` e documente o limite do que o smoke test prova.
 
+## Guardrail de Frontend
+
+- Preserve o frontend atual do HackCafe como identidade visual principal do produto.
+- Nao redesenhe a navegacao, paleta, densidade, hierarquia visual, componentes base ou tom da interface sem decisao explicita do maintainer.
+- Novas capacidades vindas do CafAI devem entrar como extensoes incrementais dentro da experiencia existente, reutilizando os padroes de `plataforma-web/`.
+- Quando houver duvida entre criar uma UI nova e encaixar no visual atual, escolha encaixar no visual atual.
+- Mudancas visuais relevantes precisam declarar o que foi preservado, o que mudou e por que a mudanca nao descaracteriza o HackCafe.
+
 ## Pilhas e Fronteiras
 
 - `plataforma-web/`: Next.js, React, TypeScript, Tailwind e componentes shadcn/Radix.
