@@ -26,7 +26,7 @@ O produto deve transformar sinais fragmentados em uma fila de decisao:
 
 ## Escopo desta entrega
 
-Esta versao entrega pesquisa de mesa, personas, dores, oportunidades, proposta de valor, backlog e plano de validacao. Ela nao substitui entrevista com produtor, cooperativa ou agronomo.
+Esta versao entrega pesquisa de mesa, personas, dores, oportunidades, proposta de valor, backlog, explicacao de Machine Learning e plano de validacao. Ela nao substitui entrevista com produtor, cooperativa ou agronomo.
 
 :::caution Limite agronomico
 Qualquer recomendacao ligada a defensivos, nutricao, irrigacao ou manejo deve ser validada por profissional habilitado e por dados locais antes de uso real em lavoura.

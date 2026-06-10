@@ -23,7 +23,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Produto',
-      items: ['produto/backlog-roadmap'],
+      items: ['produto/backlog-roadmap', 'produto/machine-learning'],
     },
     {
       type: 'category',
