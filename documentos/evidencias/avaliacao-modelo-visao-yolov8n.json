@@ -1,0 +1,270 @@
+{
+  "model_path": "C:\\Users\\Usuario\\Documents\\Projetos para portifólio\\HackCafe\\análise-preditiva\\yolov8n.pt",
+  "model_task": "detect",
+  "model_class_count": 80,
+  "model_classes_preview": [
+    "person",
+    "bicycle",
+    "car",
+    "motorcycle",
+    "airplane",
+    "bus",
+    "train",
+    "truck",
+    "boat",
+    "traffic light",
+    "fire hydrant",
+    "stop sign",
+    "parking meter",
+    "bench",
+    "bird",
+    "cat",
+    "dog",
+    "horse",
+    "sheep",
+    "cow"
+  ],
+  "dataset": {
+    "rows": 1747,
+    "target_classes": [
+      "healthy",
+      "leaf_miner",
+      "leaf_rust",
+      "brown_leaf_spot_or_phoma",
+      "cercospora"
+    ],
+    "split_counts": {
+      "train": {
+        "healthy": 99,
+        "leaf_miner": 177,
+        "leaf_rust": 325,
+        "brown_leaf_spot_or_phoma": 242,
+        "cercospora": 95
+      },
+      "val": {
+        "healthy": 21,
+        "leaf_miner": 38,
+        "leaf_rust": 69,
+        "brown_leaf_spot_or_phoma": 51,
+        "cercospora": 20
+      },
+      "test": {
+        "healthy": 22,
+        "leaf_miner": 39,
+        "leaf_rust": 71,
+        "brown_leaf_spot_or_phoma": 53,
+        "cercospora": 21
+      }
+    },
+    "excluded": {
+      "5": 62
+    },
+    "missing_images": 342,
+    "total_used": 1343
+  },
+  "evaluation_split": "test",
+  "evaluation_items": 206,
+  "target_class_overlap": [],
+  "metrics_available": false,
+  "quality_gate": "not_evaluable",
+  "reason": "model_is_coco_object_detector_but_bracol_local_ground_truth_is_image_level_classification; precision_recall_map_for_coffee_disease_detection_requires task-specific classes and bounding-box labels",
+  "metrics": {
+    "accuracy": null,
+    "macro_precision": null,
+    "macro_recall": null,
+    "macro_f1": null,
+    "weighted_precision": null,
+    "weighted_recall": null,
+    "weighted_f1": null,
+    "per_class": {},
+    "confusion_matrix": null
+  },
+  "detection_smoke": {
+    "sample_size": 24,
+    "confidence_threshold": 0.25,
+    "elapsed_seconds": 2.260311099991668,
+    "images_per_second": 10.61800740618779,
+    "class_counts": {
+      "bird": 2,
+      "kite": 7,
+      "apple": 2
+    },
+    "detections": [
+      {
+        "image_id": "1068",
+        "ground_truth_class": "leaf_miner",
+        "detections": [
+          {
+            "class": "bird",
+            "confidence": 0.31734219193458557
+          }
+        ]
+      },
+      {
+        "image_id": "1093",
+        "ground_truth_class": "healthy",
+        "detections": []
+      },
+      {
+        "image_id": "1159",
+        "ground_truth_class": "cercospora",
+        "detections": []
+      },
+      {
+        "image_id": "1536",
+        "ground_truth_class": "leaf_rust",
+        "detections": []
+      },
+      {
+        "image_id": "596",
+        "ground_truth_class": "leaf_rust",
+        "detections": []
+      },
+      {
+        "image_id": "182",
+        "ground_truth_class": "healthy",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.5111549496650696
+          }
+        ]
+      },
+      {
+        "image_id": "1594",
+        "ground_truth_class": "leaf_rust",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.3833335340023041
+          }
+        ]
+      },
+      {
+        "image_id": "1131",
+        "ground_truth_class": "leaf_miner",
+        "detections": []
+      },
+      {
+        "image_id": "1188",
+        "ground_truth_class": "leaf_miner",
+        "detections": [
+          {
+            "class": "bird",
+            "confidence": 0.4008120000362396
+          }
+        ]
+      },
+      {
+        "image_id": "1245",
+        "ground_truth_class": "leaf_rust",
+        "detections": []
+      },
+      {
+        "image_id": "1144",
+        "ground_truth_class": "leaf_miner",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.8668959736824036
+          }
+        ]
+      },
+      {
+        "image_id": "121",
+        "ground_truth_class": "leaf_rust",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.8098117709159851
+          }
+        ]
+      },
+      {
+        "image_id": "561",
+        "ground_truth_class": "leaf_rust",
+        "detections": [
+          {
+            "class": "apple",
+            "confidence": 0.3091571033000946
+          }
+        ]
+      },
+      {
+        "image_id": "1579",
+        "ground_truth_class": "cercospora",
+        "detections": []
+      },
+      {
+        "image_id": "68",
+        "ground_truth_class": "leaf_miner",
+        "detections": []
+      },
+      {
+        "image_id": "683",
+        "ground_truth_class": "brown_leaf_spot_or_phoma",
+        "detections": [
+          {
+            "class": "apple",
+            "confidence": 0.3530702292919159
+          }
+        ]
+      },
+      {
+        "image_id": "1664",
+        "ground_truth_class": "leaf_rust",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.6155700087547302
+          }
+        ]
+      },
+      {
+        "image_id": "21",
+        "ground_truth_class": "leaf_miner",
+        "detections": []
+      },
+      {
+        "image_id": "183",
+        "ground_truth_class": "healthy",
+        "detections": []
+      },
+      {
+        "image_id": "1410",
+        "ground_truth_class": "cercospora",
+        "detections": []
+      },
+      {
+        "image_id": "674",
+        "ground_truth_class": "healthy",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.6434757113456726
+          }
+        ]
+      },
+      {
+        "image_id": "436",
+        "ground_truth_class": "brown_leaf_spot_or_phoma",
+        "detections": [
+          {
+            "class": "kite",
+            "confidence": 0.31469476222991943
+          }
+        ]
+      },
+      {
+        "image_id": "347",
+        "ground_truth_class": "brown_leaf_spot_or_phoma",
+        "detections": []
+      },
+      {
+        "image_id": "1311",
+        "ground_truth_class": "leaf_miner",
+        "detections": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.docusaurus/
+build/
+dist/
+coverage/
+runs/
+
+.env
+.env.*
+!.env.example
+
+.vercel/
+*.log
+__pycache__/
+*.pyc
