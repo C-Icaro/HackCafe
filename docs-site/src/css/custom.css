@@ -1,0 +1,60 @@
+:root {
+  --ifm-color-primary: #14532d;
+  --ifm-color-primary-dark: #124a29;
+  --ifm-color-primary-darker: #104425;
+  --ifm-color-primary-darkest: #0b321b;
+  --ifm-color-primary-light: #1d6b3d;
+  --ifm-color-primary-lighter: #257a49;
+  --ifm-color-primary-lightest: #338c58;
+  --ifm-font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ifm-heading-font-weight: 760;
+  --hackcafe-ink: #15201a;
+  --hackcafe-muted: #5f6f65;
+  --hackcafe-ground: #f5f1e9;
+  --hackcafe-line: #d6cdbd;
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #86efac;
+  --ifm-background-color: #0e1511;
+  --ifm-background-surface-color: #17211a;
+}
+
+.hero {
+  background:
+    linear-gradient(135deg, rgba(20, 83, 45, 0.96), rgba(89, 55, 29, 0.88)),
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.16), transparent 30%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  color: white;
+}
+
+.hero__title,
+.hero__subtitle {
+  max-width: 920px;
+}
+
+.theme-doc-markdown table {
+  display: table;
+  width: 100%;
+  font-size: 0.94rem;
+}
+
+.theme-doc-markdown th {
+  background: var(--hackcafe-ground);
+  color: var(--hackcafe-ink);
+}
+
+.theme-doc-markdown td,
+.theme-doc-markdown th {
+  vertical-align: top;
+}
+
+.navbar__title {
+  font-weight: 760;
+}
+
+.footer {
+  background: #111814;
+}
