@@ -20,7 +20,7 @@ interface AnalysisResult {
 }
 
 export default function PredictiveAnalysisPage() {
-  const [analysisResults, setAnalysisResults] = useState<AnalysisResult[]>([
+  const [analysisResults] = useState<AnalysisResult[]>([
     {
       id: "1",
       type: "leaf",
@@ -75,7 +75,7 @@ export default function PredictiveAnalysisPage() {
     },
   ])
 
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     totalAnalyses: 156,
     healthyLeaves: 89,
     diseasedLeaves: 12,
