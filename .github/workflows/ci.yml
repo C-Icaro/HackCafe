@@ -58,4 +58,7 @@ jobs:
           python-version: "3.13"
 
       - name: Run smoke data contract
-        run: python tests/smoke_data_contract.py
+        run: |
+          python tests/smoke_data_contract.py
+          python tests/smoke_cv_dataset_manifest.py
+          python análise-preditiva/prepare_bracol_classification.py --dry-run

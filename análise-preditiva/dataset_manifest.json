@@ -1,0 +1,280 @@
+{
+  "updated_at": "2026-06-10",
+  "product_goal": "Selecionar datasets publicos para treinar e validar modelos de visao computacional do HackCafe sem descaracterizar a experiencia web existente.",
+  "decision": {
+    "primary_dataset": "bracol",
+    "primary_reason": "Ja esta parcialmente no repositorio, foi coletado no Brasil com Arabica, possui classes alinhadas ao produto e inclui severidade.",
+    "first_model_slice": "Classificador de estresse/severidade em folha inteira usando BRACOL local no Google Colab, com aviso de imagens ausentes no checkout.",
+    "second_model_slice": "Detector YOLO de sintomas usando BRACOT/BRACOL-YOLO/Roboflow depois de revisar qualidade das anotacoes.",
+    "external_validation": "Validar generalizacao com RoCoLe, JMuBEN/JMuBEN2 e Uganda Coffee Leaf antes de declarar robustez agronomica."
+  },
+  "selection_criteria": [
+    "alinhamento com cafe Arabica/Robusta e pragas/doencas do HackCafe",
+    "qualidade e tipo de rotulo: classe, severidade, segmentacao, bounding box ou instancia",
+    "uso em campo versus fundo controlado",
+    "licenca publica e citacao clara",
+    "tamanho e equilibrio entre classes",
+    "compatibilidade com Colab, YOLO/Ultralytics e pipeline reproducivel"
+  ],
+  "datasets": [
+    {
+      "id": "bracol",
+      "name": "BRACOL - Brazilian Arabica Coffee Leaf images dataset",
+      "tier": "A",
+      "fit_score": 95,
+      "source_url": "https://data.mendeley.com/datasets/yy2k5y8mxg/1",
+      "doi": "10.17632/yy2k5y8mxg.1",
+      "license": "CC BY 4.0",
+      "region": "Espirito Santo, Brazil",
+      "crop": "Arabica coffee",
+      "size": "1747 leaf images and 2147 symptom crops",
+      "tasks": [
+        "classification",
+        "severity_estimation",
+        "semantic_segmentation",
+        "symptom_classification"
+      ],
+      "classes": [
+        "healthy",
+        "leaf_miner",
+        "leaf_rust",
+        "brown_leaf_spot_or_phoma",
+        "cercospora",
+        "inconclusive_or_mixed"
+      ],
+      "use_for": [
+        "baseline imediato do HackCafe",
+        "classificacao de estresse predominante",
+        "estimativa inicial de severidade",
+        "comparacao com dataset ja embarcado no repo"
+      ],
+      "risks": [
+        "muitas imagens usam fundo branco/parcialmente controlado",
+        "checkout atual possui 1402 JPGs para 1747 linhas de CSV; treino final deve sincronizar a fonte Mendeley completa",
+        "rotulos de phoma/brown leaf spot precisam normalizacao antes de comunicar ao usuario",
+        "nao e dataset de bounding boxes pronto no checkout atual"
+      ]
+    },
+    {
+      "id": "bracot",
+      "name": "BRACOT - Brazilian Arabica Coffee Tree images dataset",
+      "tier": "A",
+      "fit_score": 90,
+      "source_url": "https://data.mendeley.com/datasets/pmkbyjpf6k/1",
+      "doi": "10.17632/pmkbyjpf6k.1",
+      "license": "CC BY 4.0",
+      "region": "Espirito Santo, Brazil",
+      "crop": "Arabica coffee",
+      "size": "300 field images with 1662 VIA instance labels",
+      "tasks": [
+        "instance_segmentation",
+        "object_detection",
+        "field_context_validation"
+      ],
+      "classes": [
+        "healthy_leaf",
+        "leaf_miner",
+        "leaf_rust",
+        "brown_leaf_spot",
+        "cercospora"
+      ],
+      "use_for": [
+        "segunda fatia de deteccao em imagem de planta no campo",
+        "avaliar robustez fora do fundo branco",
+        "treinar/validar segmentacao de folhas e sintomas em ramos"
+      ],
+      "risks": [
+        "pequeno para treinamento profundo isolado",
+        "exige conversao VIA para YOLO/COCO",
+        "deve ser combinado com BRACOL ou pretreinamento"
+      ]
+    },
+    {
+      "id": "bracol_yolo_detection",
+      "name": "BRACOL for YOLO Detection",
+      "tier": "A-",
+      "fit_score": 86,
+      "source_url": "https://www.kaggle.com/datasets/jonatanfragoso/bracol-for-yolov8-detection",
+      "doi": "",
+      "license": "verificar no Kaggle antes de redistribuir",
+      "region": "Brazil, derived from BRACOL",
+      "crop": "Arabica coffee",
+      "size": "YOLO-formatted derivative of BRACOL disease markings",
+      "tasks": [
+        "object_detection"
+      ],
+      "classes": [
+        "miner",
+        "rust",
+        "phoma_or_brown_leaf_spot",
+        "cercospora"
+      ],
+      "use_for": [
+        "atalho para benchmark YOLO no Colab",
+        "comparar com artigo de YOLO em BRACOL",
+        "gerar modelo demonstravel sem reanotar manualmente"
+      ],
+      "risks": [
+        "derivacao de terceiros precisa revisao de licenca e anotacoes",
+        "pode nao manter exatamente o split original",
+        "nao deve substituir a fonte BRACOL canonica sem auditoria"
+      ]
+    },
+    {
+      "id": "roboflow_coffee_leaf_diseases_classification",
+      "name": "Roboflow Universe - Coffee leaf diseases classification",
+      "tier": "B+",
+      "fit_score": 82,
+      "source_url": "https://universe.roboflow.com/data6000-y6w94/coffee-leaf-diseases-classification",
+      "doi": "",
+      "license": "CC BY 4.0",
+      "region": "not specified on page",
+      "crop": "Coffee",
+      "size": "1808 images, object detection, 5 classes",
+      "tasks": [
+        "object_detection",
+        "quick_api_benchmark"
+      ],
+      "classes": [
+        "healthy",
+        "rust",
+        "cerscospora",
+        "miner",
+        "phoma"
+      ],
+      "use_for": [
+        "experimento rapido de deteccao em Colab",
+        "comparacao com modelo/API publico",
+        "prototipagem quando houver Roboflow API key"
+      ],
+      "risks": [
+        "descricao tecnica limitada",
+        "precisa validar se nao e duplicata/derivacao do BRACOL",
+        "depende de token/API para exportacao automatica"
+      ]
+    },
+    {
+      "id": "jmuben_jmuben2",
+      "name": "JMuBEN and JMuBEN2 Arabica coffee leaf datasets",
+      "tier": "B+",
+      "fit_score": 80,
+      "source_url": "https://data.mendeley.com/datasets/t2r6rszp5c/1",
+      "secondary_source_url": "https://data.mendeley.com/datasets/tgv3zb82nd/1",
+      "doi": "10.17632/t2r6rszp5c.1 and 10.17632/tgv3zb82nd.1",
+      "license": "CC BY 4.0",
+      "region": "Kenya",
+      "crop": "Arabica coffee",
+      "size": "about 58k cropped/augmented leaf images across JMuBEN and JMuBEN2",
+      "tasks": [
+        "classification",
+        "domain_pretraining"
+      ],
+      "classes": [
+        "healthy",
+        "miner",
+        "rust",
+        "cercospora",
+        "phoma"
+      ],
+      "use_for": [
+        "pretreinamento classificatorio em maior volume",
+        "teste de generalizacao fora do Brasil",
+        "benchmark de modelos maiores em Colab/Devin"
+      ],
+      "risks": [
+        "imagens sao cropped/augmented e podem inflar metricas",
+        "nao atende deteccao/localizacao de sintomas",
+        "precisa manter split por origem para evitar vazamento de augmentations"
+      ]
+    },
+    {
+      "id": "rocole",
+      "name": "RoCoLe - Robusta Coffee Leaf Images Dataset",
+      "tier": "B",
+      "fit_score": 74,
+      "source_url": "https://data.mendeley.com/datasets/c5yvn32dzg/2",
+      "doi": "10.17632/c5yvn32dzg.2",
+      "license": "CC BY 4.0",
+      "region": "Ecuador",
+      "crop": "Robusta coffee",
+      "size": "1560 leaf images with rust/mites/state/severity annotations",
+      "tasks": [
+        "classification",
+        "severity_estimation",
+        "external_validation"
+      ],
+      "classes": [
+        "healthy",
+        "unhealthy_rust_or_mites"
+      ],
+      "use_for": [
+        "validacao externa de ferrugem/severidade",
+        "avaliar transferencia Arabica -> Robusta",
+        "detectar queda de desempenho em dominio diferente"
+      ],
+      "risks": [
+        "escopo menor de classes",
+        "Robusta pode divergir do contexto de cafe de montanha Arabica",
+        "melhor como validacao do que como treino principal"
+      ]
+    },
+    {
+      "id": "uganda_common_coffee_leaf_diseases",
+      "name": "Common Coffee Leaf Diseases in Uganda",
+      "tier": "B",
+      "fit_score": 72,
+      "source_url": "https://data.mendeley.com/datasets/k36wnd6knb/1",
+      "doi": "10.17632/k36wnd6knb.1",
+      "license": "CC BY 4.0",
+      "region": "Uganda",
+      "crop": "Coffee",
+      "size": "3312 labeled 256x256 JPEG images",
+      "tasks": [
+        "classification",
+        "external_validation"
+      ],
+      "classes": [
+        "healthy",
+        "coffee_leaf_rust",
+        "phoma"
+      ],
+      "use_for": [
+        "validacao externa recente",
+        "treino auxiliar para rust/phoma",
+        "avaliar robustez sob iluminacao de smartphone"
+      ],
+      "risks": [
+        "so cobre tres classes",
+        "dataset ja inclui augmentations; separar original/augmentado se possivel",
+        "nao resolve miner/cercospora"
+      ]
+    },
+    {
+      "id": "coffee_fruit_maturity_kaggle",
+      "name": "Coffee Fruit Maturity",
+      "tier": "C+",
+      "fit_score": 62,
+      "source_url": "https://www.kaggle.com/datasets/cienciacafeto/coffee-fruit-maturity",
+      "doi": "",
+      "license": "verificar no Kaggle antes de redistribuir",
+      "region": "not specified on search result",
+      "crop": "Arabica coffee cherries",
+      "size": "coffee cherries at maturity levels, skewed toward green cherries",
+      "tasks": [
+        "fruit_maturity_classification"
+      ],
+      "classes": [
+        "maturity_levels"
+      ],
+      "use_for": [
+        "fatia futura de maturacao/colheita",
+        "storytelling de ciclo completo da lavoura ao fruto"
+      ],
+      "risks": [
+        "nao atende diagnostico de folhas",
+        "pode ter desbalanceamento forte",
+        "exige credenciais Kaggle para reproducao no Colab"
+      ]
+    }
+  ]
+}
