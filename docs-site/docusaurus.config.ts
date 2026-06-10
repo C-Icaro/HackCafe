@@ -1,11 +1,14 @@
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const siteUrl = process.env.DOCS_SITE_URL ?? 'https://hackcafe-discovery.vercel.app';
+const baseUrl = process.env.DOCS_BASE_URL ?? '/';
+
 const config: Config = {
   title: 'HackCafe Discovery',
   tagline: 'Inteligencia de decisao para a cafeicultura de montanha',
-  url: 'https://c-icaro.github.io',
-  baseUrl: '/HackCafe/',
+  url: siteUrl,
+  baseUrl,
   organizationName: 'C-Icaro',
   projectName: 'HackCafe',
   onBrokenLinks: 'throw',
